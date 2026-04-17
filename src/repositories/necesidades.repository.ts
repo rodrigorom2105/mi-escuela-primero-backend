@@ -28,3 +28,9 @@ export async function deleteNecesidad(id: number) {
   const { error } = await supabase.from("necesidades").delete().eq("id", id)
   if (error) throw error
 }
+
+export async function getNecesidadesByPlantelId(plantelId: number) {
+  const { data, error } = await supabase.from("necesidades").select("*").eq("plantel_id", plantelId)
+  if (error) throw error
+  return data
+}

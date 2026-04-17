@@ -40,3 +40,4 @@ export async function deleteEscuela(id: number) {
   const { error } = await supabase.from("escuelas").delete().eq("id", id)
   if (error) throw error
 }
+

@@ -10,3 +10,10 @@ if (!supabaseUrl || !supabasePublishableKey) {
 }
 
 export const supabase = createClient(supabaseUrl, supabasePublishableKey);
+
+export function createUserClient(accessToken: string) {
+  return createClient(supabaseUrl!, supabasePublishableKey!, {
+    global: { headers: { Authorization: `Bearer ${accessToken}` } },
+    auth: { persistSession: false },
+  });
+}
